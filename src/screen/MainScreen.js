@@ -4,6 +4,9 @@ import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
 
 class MainScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -14,11 +17,7 @@ class MainScreen extends Component {
             style={styles.emptyImage}
           />
           <View style={styles.fab}>
-            <CircleButton
-              onClick={() => {
-                alert('Hello');
-              }}
-            />
+            <CircleButton onClick={() => this.props.onAdd()} />
           </View>
         </View>
       </View>

@@ -12,17 +12,14 @@ import {
 export default class AddTodoModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modalVisible: this.props.visible,
-    };
   }
   render() {
     return (
-      <Modal animationType="slide" visible={this.state.modalVisible}>
+      <Modal animationType="slide" visible={this.props.visible}>
         <View>
           <TouchableOpacity
             style={styles.closeButton}
-            onPress={() => this.setState({modalVisible: false})}>
+            onPress={() => this.props.onClose()}>
             <Image source={require('../assets/close_24px_outlined.png')} />
           </TouchableOpacity>
           <KeyboardAvoidingView behavior="position">

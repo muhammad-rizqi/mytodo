@@ -7,15 +7,26 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true,
+      modalVisible: false,
     };
   }
 
+  closeModal = () => {
+    this.setState({modalVisible: false});
+  };
+  openModal = () => {
+    this.setState({modalVisible: true});
+  };
   render() {
     return (
       <>
-        <MainScreen />
-        <AddTodoModal visible={this.state.modalVisible} />
+        <MainScreen onAdd={() => this.openModal()} />
+        <AddTodoModal
+          visible={this.state.modalVisible}
+          onClose={() => {
+            this.closeModal();
+          }}
+        />
       </>
     );
   }

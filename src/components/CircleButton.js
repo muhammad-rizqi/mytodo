@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
-    width: 40,
-    borderRadius: 40 / 2,
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
     backgroundColor: '#1D71AA',
   },
 });
