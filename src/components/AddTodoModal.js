@@ -9,7 +9,6 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
-
 export default class AddTodoModal extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +20,12 @@ export default class AddTodoModal extends Component {
     return (
       <Modal animationType="slide" visible={this.state.modalVisible}>
         <View>
+          <TouchableOpacity
+            style={styles.closeButton}
+            onPress={() => this.setState({modalVisible: false})}>
+            <Image source={require('../assets/close_24px_outlined.png')} />
+          </TouchableOpacity>
           <KeyboardAvoidingView behavior="position">
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => this.setState({modalVisible: false})}>
-              <Image source={require('../assets/close_24px_outlined.png')} />
-            </TouchableOpacity>
             <View style={styles.heading}>
               <Text style={styles.headingText}>ADD TODO</Text>
               <View style={styles.headingLine} />
@@ -59,8 +58,8 @@ export default class AddTodoModal extends Component {
 
 const styles = StyleSheet.create({
   closeButton: {
-    position: 'absolute',
-    right: 16,
+    alignSelf: 'flex-end',
+    marginRight: 16,
     top: 16,
   },
   heading: {
