@@ -4,11 +4,18 @@ import AddTodoModal from './src/components/AddTodoModal';
 import MainScreen from './src/screen/MainScreen';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: true,
+    };
+  }
+
   render() {
     return (
       <>
         <MainScreen />
-        <AddTodoModal />
+        <AddTodoModal visible={this.state.modalVisible} />
       </>
     );
   }
