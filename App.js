@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, Image, TouchableHighlight} from 'react-native';
 import AddTodoModal from './src/components/AddTodoModal';
+import ListComponents from './src/components/ListComponents';
 import MainScreen from './src/screen/MainScreen';
 
 export default class App extends Component {
@@ -31,5 +32,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});
