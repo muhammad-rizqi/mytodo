@@ -35,6 +35,7 @@ class MainScreen extends Component {
                     key={item.id.toString()}
                     todoText={item.title}
                     addedStyle={{marginVertical: 8}}
+                    onDelete={() => this.props.data.splice(item.id, 1)}
                   />
                 )}
               />

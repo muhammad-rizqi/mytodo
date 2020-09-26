@@ -34,7 +34,11 @@ export default class ListComponents extends Component {
             style={{width: 24, height: 24}}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{flex: 1}}>
+        <TouchableOpacity
+          style={{flex: 1}}
+          onPress={() => {
+            this.props.onDelete();
+          }}>
           <Image
             source={require('../assets/delete_24px_outlined.png')}
             style={{width: 24, height: 24}}
