@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet, View, Image, TouchableHighlight} from 'react-native';
 import AddTodoModal from './src/components/AddTodoModal';
-import ListComponents from './src/components/ListComponents';
 import MainScreen from './src/screen/MainScreen';
 
 export default class App extends Component {
@@ -9,6 +7,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       modalVisible: false,
+      data: [],
     };
   }
 
@@ -21,12 +20,13 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <MainScreen onAdd={() => this.openModal()} />
+        <MainScreen onAdd={() => this.openModal()} data={this.state.data} />
         <AddTodoModal
           visible={this.state.modalVisible}
           onClose={() => {
             this.closeModal();
           }}
+          data={this.state.data}
         />
       </>
     );

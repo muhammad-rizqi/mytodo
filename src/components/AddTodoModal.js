@@ -12,6 +12,12 @@ import {
 export default class AddTodoModal extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      id: this.props.data.length,
+      title: '',
+      description: '',
+    };
+    console.log(this.props.data);
   }
   render() {
     return (
@@ -30,7 +36,11 @@ export default class AddTodoModal extends Component {
             <View style={styles.form}>
               <View style={styles.input}>
                 <Text style={styles.titleInput}>Title :</Text>
-                <TextInput style={styles.titleInputText} placeholder="Todo" />
+                <TextInput
+                  style={styles.titleInputText}
+                  placeholder="Todo"
+                  onChangeText={(title) => this.setState({title: title})}
+                />
               </View>
               <View style={styles.input}>
                 <Text style={styles.titleInput}>Description :</Text>
@@ -38,10 +48,15 @@ export default class AddTodoModal extends Component {
                   style={[styles.titleInputText, styles.descriptionInput]}
                   placeholder="Tell me what to do"
                   multiline={true}
+                  onChangeText={(title) => this.setState({description: title})}
                 />
                 <TouchableOpacity
                   style={styles.button}
-                  onPress={() => this.setState({modalVisible: false})}>
+                  onPress={() => {
+                    this.props.onClose();
+                    this.props.data.push(this.state);
+                    console.log(this.props.data);
+                  }}>
                   <Text style={styles.buttonText}>ADD TODO</Text>
                 </TouchableOpacity>
               </View>

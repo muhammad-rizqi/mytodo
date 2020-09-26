@@ -4,51 +4,42 @@ import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
 import ListComponents from '../components/ListComponents';
 
+const ImageEmpty = () => {
+  return (
+    <Image
+      source={require('../assets/data_empty.png')}
+      style={styles.emptyImage}
+    />
+  );
+};
+
 class MainScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [
-        {id: 1, title: 'the'},
-        {id: 2, title: 'quick'},
-        {id: 3, title: 'brown'},
-        {id: 4, title: 'fox'},
-        {id: 5, title: 'jumps'},
-        {id: 6, title: 'over'},
-        {id: 7, title: 'the'},
-        {id: 9, title: 'lazy'},
-        {id: 10, title: 'dig'},
-        {id: 11, title: 'the quick brown fox jumps over the lazy dog'},
-      ],
-    };
   }
+
   render() {
     return (
       <View style={styles.container}>
         <Header />
         <View style={styles.main}>
-          {/* <Image
-            source={require('../assets/data_empty.png')}
-            style={styles.emptyImage}
-          /> */}
-          <View
-            style={{
-              marginTop: 42,
-              height: 400,
-              paddingHorizontal: 32,
-            }}>
-            <FlatList
-              data={this.state.data}
-              keyExtractor={(item) => item.id}
-              renderItem={({item, index}) => (
-                <ListComponents
-                  key={index.toString()}
-                  todoText={item.title}
-                  addedStyle={{marginVertical: 8}}
-                />
-              )}
-            />
-          </View>
+          {this.props.data.length === 0 ? (
+            <ImageEmpty />
+          ) : (
+            <View style={styles.listContainer}>
+              <FlatList
+                data={this.props.data}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({item}) => (
+                  <ListComponents
+                    key={item.id.toString()}
+                    todoText={item.title}
+                    addedStyle={{marginVertical: 8}}
+                  />
+                )}
+              />
+            </View>
+          )}
           <View style={styles.fab}>
             <CircleButton onClick={() => this.props.onAdd()} />
           </View>
@@ -81,6 +72,11 @@ const styles = StyleSheet.create({
     height: 286,
     alignSelf: 'center',
     marginTop: 92,
+  },
+  listContainer: {
+    marginTop: 42,
+    height: 400,
+    paddingHorizontal: 32,
   },
 });
 
