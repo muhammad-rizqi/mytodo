@@ -1,17 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {FlatList, Image, StyleSheet, View} from 'react-native';
 import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
+import ImageEmpty from '../components/ImageEmpty';
 import ListComponents from '../components/ListComponents';
-
-const ImageEmpty = () => {
-  return (
-    <Image
-      source={require('../assets/data_empty.png')}
-      style={styles.emptyImage}
-    />
-  );
-};
 
 class MainScreen extends Component {
   constructor(props) {
@@ -71,12 +64,7 @@ const styles = StyleSheet.create({
     bottom: 32,
     alignSelf: 'center',
   },
-  emptyImage: {
-    width: 300,
-    height: 286,
-    alignSelf: 'center',
-    marginTop: 92,
-  },
+
   listContainer: {
     marginTop: 42,
     height: 400,

@@ -39,6 +39,7 @@ export default class AddTodoModal extends Component {
                 <TextInput
                   style={styles.titleInputText}
                   placeholder="Todo"
+                  maxLength={60}
                   onChangeText={(title) => this.setState({title: title})}
                 />
               </View>
