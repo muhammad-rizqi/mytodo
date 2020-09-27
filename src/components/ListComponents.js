@@ -17,15 +17,18 @@ export default class ListComponents extends Component {
   render() {
     return (
       <View style={[styles.list, this.props.addedStyle]}>
-        <Text
-          style={{
-            flex: 9,
-            fontWeight: 'bold',
-            textDecorationLine: this.state.strike ? 'line-through' : 'none',
-            color: this.state.strike ? '#aeaeae' : 'black',
-          }}>
-          {this.props.todoText}
-        </Text>
+        <TouchableOpacity
+          onPress={() => this.props.onClick()}
+          style={{flex: 9}}>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              textDecorationLine: this.state.strike ? 'line-through' : 'none',
+              color: this.state.strike ? '#aeaeae' : 'black',
+            }}>
+            {this.props.todoText}
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.toggleStrike()}
           style={{flex: 1, marginHorizontal: 4}}>

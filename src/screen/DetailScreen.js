@@ -15,63 +15,31 @@ class DetailScreen extends Component {
   }
 
   render() {
+    const {params} = this.props.route;
+
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => alert('Kembali')}>
-            <Image source={require('../assets/arrow_back_24px_outlined.png')} />
-          </TouchableOpacity>
-          <Header />
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => this.props.navigation.goBack()}>
+          <Image source={require('../assets/arrow_back_24px_outlined.png')} />
+        </TouchableOpacity>
+        <Header />
+        <ScrollView style={{marginTop: 64}}>
           <View style={styles.main}>
-            <Text style={styles.titleText}>
-              Totam eius quia veritatis animi velit optio. Deleniti illo
-              corporis facilis dicta provident repudiandae iure.
-            </Text>
+            <Text style={styles.titleText}>{params.title}</Text>
             <View style={styles.divider} />
-            <Text style={styles.descriptionText}>
-              Vel et unde dignissimos id expedita dolores exercitationem.
-              Ratione recusandae ut quasi sapiente. Recusandae suscipit quidem
-              illo aliquid. Aut libero et. Aut perspiciatis iste est. Et ea et
-              dolorem explicabo distinctio odit repudiandae sint. Deserunt aut
-              aliquid ut praesentium voluptas sed. Earum esse et libero
-              veritatis repellat sit magni excepturi assumenda. Quisquam quia
-              neque ea. Delectus veritatis consectetur ut sint illo esse
-              pariatur cum. Laboriosam tenetur dicta eius. Excepturi voluptatem
-              et autem cum fuga repudiandae neque ut. Expedita autem aliquid rem
-              et. Iusto rerum libero. Minus quia quo aut deserunt nulla aut
-              omnis ratione. Vel et unde dignissimos id expedita dolores
-              exercitationem. Ratione recusandae ut quasi sapiente. Recusandae
-              suscipit quidem illo aliquid. Aut libero et. Aut perspiciatis iste
-              est. Et ea et dolorem explicabo distinctio odit repudiandae sint.
-              Deserunt aut aliquid ut praesentium voluptas sed. Earum esse et
-              libero veritatis repellat sit magni excepturi assumenda. Quisquam
-              quia neque ea. Delectus veritatis consectetur ut sint illo esse
-              pariatur cum. Laboriosam tenetur dicta eius. Excepturi voluptatem
-              et autem cum fuga repudiandae neque ut. Expedita autem aliquid rem
-              et. Iusto rerum libero. Minus quia quo aut deserunt nulla aut
-              omnis ratione. Vel et unde dignissimos id expedita dolores
-              exercitationem. Ratione recusandae ut quasi sapiente. Recusandae
-              suscipit quidem illo aliquid. Aut libero et. Aut perspiciatis iste
-              est. Et ea et dolorem explicabo distinctio odit repudiandae sint.
-              Deserunt aut aliquid ut praesentium voluptas sed. Earum esse et
-              libero veritatis repellat sit magni excepturi assumenda. Quisquam
-              quia neque ea. Delectus veritatis consectetur ut sint illo esse
-              pariatur cum. Laboriosam tenetur dicta eius. Excepturi voluptatem
-              et autem cum fuga repudiandae neque ut. Expedita autem aliquid rem
-              et. Iusto rerum libero. Minus quia quo aut deserunt nulla aut
-              omnis ratione.
-            </Text>
+            <Text style={styles.descriptionText}>{params.description}</Text>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#1D71AA',
@@ -79,7 +47,6 @@ const styles = StyleSheet.create({
   },
   main: {
     marginTop: 32,
-    flex: 7,
     backgroundColor: '#FFF',
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,

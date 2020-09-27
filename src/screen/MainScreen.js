@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {FlatList, Image, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
 import ImageEmpty from '../components/ImageEmpty';
@@ -32,6 +32,7 @@ class MainScreen extends Component {
                       this.props.data.splice(index, 1);
                       this.forceUpdate();
                     }}
+                    onClick={() => this.props.navigate(item)}
                   />
                 )}
               />

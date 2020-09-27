@@ -1,36 +1,26 @@
-import React, {Component} from 'react';
-import AddTodoModal from './src/components/AddTodoModal';
+import 'react-native-gesture-handler';
+import React from 'react';
+import AppScreen from './src/screen/AppScreen';
 import DetailScreen from './src/screen/DetailScreen';
-import MainScreen from './src/screen/MainScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: false,
-      data: [],
-    };
-  }
-
-  closeModal = () => {
-    this.setState({modalVisible: false});
-  };
-  openModal = () => {
-    this.setState({modalVisible: true});
-  };
-
-  render() {
-    return (
-      <>
-        <MainScreen onAdd={() => this.openModal()} data={this.state.data} />
-        <AddTodoModal
-          visible={this.state.modalVisible}
-          onClose={() => {
-            this.closeModal();
-          }}
-          data={this.state.data}
+const Stack = createStackNavigator();
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={AppScreen}
+          options={{headerShown: false}}
         />
-      </>
-    );
-  }
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
