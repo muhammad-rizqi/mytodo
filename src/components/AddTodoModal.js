@@ -54,7 +54,7 @@ export default class AddTodoModal extends Component {
                   style={styles.button}
                   onPress={() => {
                     if (
-                      this.state.title === '' &&
+                      this.state.title === '' ||
                       this.state.description === ''
                     ) {
                       alert('Input must be filled');
