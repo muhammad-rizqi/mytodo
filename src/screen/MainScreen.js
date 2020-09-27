@@ -30,12 +30,15 @@ class MainScreen extends Component {
               <FlatList
                 data={this.props.data}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({item}) => (
+                renderItem={({item, index}) => (
                   <ListComponents
                     key={item.id.toString()}
                     todoText={item.title}
                     addedStyle={{marginVertical: 8}}
-                    onDelete={() => this.props.data.splice(item.id, 1)}
+                    onDelete={() => {
+                      this.props.data.splice(index, 1);
+                      this.forceUpdate();
+                    }}
                   />
                 )}
               />

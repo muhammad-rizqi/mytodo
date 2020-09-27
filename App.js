@@ -17,6 +17,7 @@ export default class App extends Component {
   openModal = () => {
     this.setState({modalVisible: true});
   };
+
   render() {
     return (
       <>

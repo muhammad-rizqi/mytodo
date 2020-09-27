@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, {Component} from 'react';
 import {
   Text,
@@ -17,7 +18,6 @@ export default class AddTodoModal extends Component {
       title: '',
       description: '',
     };
-    console.log(this.props.data);
   }
   render() {
     return (
@@ -53,9 +53,22 @@ export default class AddTodoModal extends Component {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    this.props.onClose();
-                    this.props.data.push(this.state);
-                    console.log(this.props.data);
+                    if (
+                      this.state.title === '' &&
+                      this.state.description === ''
+                    ) {
+                      alert('Input must be filled');
+                    } else {
+                      this.props.onClose();
+                      this.props.data.push(this.state);
+                      console.log(this.props.data);
+                      //deleting state :)
+                      this.setState({
+                        id: this.props.data.length,
+                        title: '',
+                        description: '',
+                      });
+                    }
                   }}>
                   <Text style={styles.buttonText}>ADD TODO</Text>
                 </TouchableOpacity>
