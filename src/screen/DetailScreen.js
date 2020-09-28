@@ -24,14 +24,16 @@ class DetailScreen extends Component {
           onPress={() => this.props.navigation.goBack()}>
           <Image source={require('../assets/arrow_back_24px_outlined.png')} />
         </TouchableOpacity>
-        <Header />
-        <ScrollView style={{marginTop: 64}}>
-          <View style={styles.main}>
+        <View style={{flex: 1}}>
+          <Header />
+        </View>
+        <View style={styles.main}>
+          <ScrollView>
             <Text style={styles.titleText}>{params.title}</Text>
             <View style={styles.divider} />
             <Text style={styles.descriptionText}>{params.description}</Text>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
     );
   }
@@ -39,13 +41,13 @@ class DetailScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#1D71AA',
     paddingTop: 12,
   },
   main: {
+    flex: 9,
     marginTop: 32,
     backgroundColor: '#FFF',
     borderTopLeftRadius: 50,
