@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View, ActivityIndicator} from 'react-native';
 
 export default class SplashScreen extends Component {
   render() {
@@ -9,6 +9,7 @@ export default class SplashScreen extends Component {
           style={styles.splashImage}
           source={require('../assets/Splash.png')}
         />
+        <ActivityIndicator size= 'large' color= '#1D71AA' />
       </View>
     );
   }
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor : '#fff'
   },
   splashImage: {
     width: 150,
